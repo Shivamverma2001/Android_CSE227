@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
+import com.google.firebase.database.FirebaseDatabase
 
 class EmployeeDetailsActivity : AppCompatActivity() {
     private lateinit var tvEmpId:TextView
@@ -12,6 +14,7 @@ class EmployeeDetailsActivity : AppCompatActivity() {
     private lateinit var tvEmpAge:TextView
     private lateinit var tvEmpSalary:TextView
     private lateinit var update:Button
+    private lateinit var delete:Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_employee_details)
@@ -21,6 +24,7 @@ class EmployeeDetailsActivity : AppCompatActivity() {
         tvEmpAge=findViewById(R.id.tvEmpAge)
         tvEmpSalary=findViewById(R.id.tvEmpSalary)
         update=findViewById(R.id.btnUpdate)
+        delete=findViewById(R.id.btnDelete)
 
         setValuesToViews()
 
@@ -33,6 +37,9 @@ class EmployeeDetailsActivity : AppCompatActivity() {
 
             startActivity(i)
         }
+        delete.setOnClickListener {
+            deleteRecord(tvEmpId.text.toString())
+        }
     }
     private fun setValuesToViews() {
         tvEmpId.text = intent.getStringExtra("empId")
@@ -40,5 +47,17 @@ class EmployeeDetailsActivity : AppCompatActivity() {
         tvEmpAge.text = intent.getStringExtra("empAge")
         tvEmpSalary.text = intent.getStringExtra("empSalary")
 
+    }
+    private fun deleteRecord(id:String){
+        val dbRef=FirebaseDatabase.getInstance()
+            .getReference("Employees").child(id)
+        val mTask=dbRef.removeValue()
+        mTask.addOnSuccessListener {
+            Toast.makeText(this, "Deletion Successfull", Toast.LENGTH_SHORT).show()
+            val i=Intent(this,ShowDetails::class.java)
+            startActivity(i)
+        }.addOnFailureListener { error->
+            Toast.makeText(this, "Not successfull "+error.message, Toast.LENGTH_SHORT).show()
+        }
     }
 }
