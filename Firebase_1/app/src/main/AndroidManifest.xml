@@ -13,6 +13,9 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".CloudStorageMain"
+            android:exported="false" />
+        <activity
             android:name=".ShowRealTimeData"
             android:exported="false" />
         <activity
@@ -36,7 +39,7 @@
         <activity
             android:name=".PhoneOtpMain"
             android:enableOnBackInvokedCallback="true"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true" />
