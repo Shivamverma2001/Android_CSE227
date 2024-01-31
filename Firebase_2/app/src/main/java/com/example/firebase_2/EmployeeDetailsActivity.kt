@@ -26,7 +26,7 @@ class EmployeeDetailsActivity : AppCompatActivity() {
 
         update.setOnClickListener {
             val i=Intent(this,UpdateActivity::class.java)
-
+            i.putExtra("empId",tvEmpId.text.toString())
             i.putExtra("empName",tvEmpName.text.toString())
             i.putExtra("empAge",tvEmpAge.text.toString())
             i.putExtra("empSalary",tvEmpSalary.text.toString())
