@@ -10,10 +10,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyApplication"
+        android:theme="@style/Theme.AnimationDemoU2"
         tools:targetApi="31">
         <activity
-            android:name=".CloudStorageMain"
+            android:name=".CanvasGameMain"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,29 +22,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ShowRealTimeData"
-            android:exported="false" />
-        <activity
-            android:name=".LoginRealTime"
-            android:exported="false" />
-        <activity
-            android:name=".RegistrationRealTime"
+            android:name=".SplashDemo"
             android:exported="true">
 
         </activity>
         <activity
-            android:name=".AfterOtp"
-            android:exported="false" />
-        <activity
-            android:name=".Otp"
-            android:exported="false" />
-        <activity
-            android:name=".PhoneOtpMain"
-            android:enableOnBackInvokedCallback="true"
-            android:exported="true" />
-        <activity
             android:name=".MainActivity"
-            android:exported="true" />
+            android:exported="true"></activity>
     </application>
 
 </manifest>
