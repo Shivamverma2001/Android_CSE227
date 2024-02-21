@@ -9,13 +9,13 @@
         android:pivotY="50%"
         android:toXScale="3"
         android:toYScale="3"/>
-    <scale
-        android:duration="1000"
-        android:fromXScale="3"
-        android:fromYScale="3"
-        android:pivotX="50%"
-        android:pivotY="50%"
-        android:toXScale="0.2"
-        android:toYScale="0.2"/>
+<!--    <scale-->
+<!--        android:duration="1000"-->
+<!--        android:fromXScale="3"-->
+<!--        android:fromYScale="3"-->
+<!--        android:pivotX="50%"-->
+<!--        android:pivotY="50%"-->
+<!--        android:toXScale="0.2"-->
+<!--        android:toYScale="0.2"/>-->
 
 </set>

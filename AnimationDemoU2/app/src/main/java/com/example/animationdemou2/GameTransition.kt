@@ -15,7 +15,7 @@ class GameTransition : AppCompatActivity() {
         transition=findViewById(R.id.button7)
         transition.setOnClickListener {
             startActivity(Intent(this,CanvasGameMain::class.java))
-            overridePendingTransition(R.anim.fade_in,R.anim.fade_out)
+            overridePendingTransition(R.anim.zoom_in,R.anim.zoom_out)
         }
 
     }
