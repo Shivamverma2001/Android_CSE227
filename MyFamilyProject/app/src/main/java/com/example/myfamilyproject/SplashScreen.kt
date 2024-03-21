@@ -11,15 +11,15 @@ class SplashScreen : AppCompatActivity() {
         SharedPref.init(this)
 
         val isUserLoggedIn = SharedPref.getBoolean(PrefConstants.IS_USER_LOGGED_IN)
-        startActivity(Intent(this, LoginActivity::class.java))
-        finish()
-//        if (isUserLoggedIn) {
-//            startActivity(Intent(this, MainActivity::class.java))
-//            finish()
-//        } else {
-//            startActivity(Intent(this, LoginActivity::class.java))
-//            finish()
-//        }
+//        startActivity(Intent(this, LoginActivity::class.java))
+//        finish()
+        if (isUserLoggedIn) {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        } else {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
 
     }
 }
