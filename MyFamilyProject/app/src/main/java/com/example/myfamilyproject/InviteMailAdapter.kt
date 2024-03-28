@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myfamilyproject.databinding.ItemInviteMailBinding
 
 class InviteMailAdapter(
-    private val listInvites: List<String>,
+    private val listInvites: ArrayList<String>,
     private val onActionClick: OnActionClick
 ) :
     RecyclerView.Adapter<InviteMailAdapter.ViewHolder>() {
@@ -28,16 +28,26 @@ class InviteMailAdapter(
 
         holder.accept.setOnClickListener {
             onActionClick.onAcceptClick(item)
+            listInvites.removeAt(position)
+            notifyDataSetChanged()
         }
 
         holder.deny.setOnClickListener {
             onActionClick.onDenyClick(item)
+            listInvites.removeAt(position)
+            notifyDataSetChanged()
         }
 
     }
 
     override fun getItemCount(): Int {
         return listInvites.size
+    }
+
+    fun updateInvites(newInvites: ArrayList<String>) {
+        listInvites.clear()
+        listInvites.addAll(newInvites)
+        notifyDataSetChanged()
     }
 
     class ViewHolder(private val item: ItemInviteMailBinding) : RecyclerView.ViewHolder(item.root) {

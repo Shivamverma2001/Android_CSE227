@@ -1,14 +1,11 @@
-package com.example.myfamilyproject
-
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myfamily.ContactModel
 import com.example.myfamilyproject.databinding.ItemInviteBinding
 
-class InviteAdapter(private val listContacts: List<ContactModel>) :
+class InviteAdapter(private val listContacts: List<ContactModel>, private val onItemClick: (String) -> Unit) :
     RecyclerView.Adapter<InviteAdapter.ViewHolder>() {
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -17,10 +14,11 @@ class InviteAdapter(private val listContacts: List<ContactModel>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
         val item = listContacts[position]
-        holder.name.text = item.name
-
+        holder.bind(item)
+        holder.itemView.setOnClickListener {
+            onItemClick(item.number)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -28,7 +26,8 @@ class InviteAdapter(private val listContacts: List<ContactModel>) :
     }
 
     class ViewHolder(private val item: ItemInviteBinding) : RecyclerView.ViewHolder(item.root) {
-        val name = item.name
-
+        fun bind(contact: ContactModel) {
+            item.name.text = contact.name
+        }
     }
 }

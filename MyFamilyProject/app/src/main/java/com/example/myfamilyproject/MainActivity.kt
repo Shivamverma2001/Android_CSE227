@@ -94,7 +94,6 @@ class MainActivity : AppCompatActivity() {
         }.addOnFailureListener {
 
         }
-
     }
 
     private fun setUpLocationListener() {
